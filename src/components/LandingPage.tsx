@@ -113,7 +113,7 @@ export function LandingPage({ onGetStarted, onStartChat }: LandingPageProps) {
         </div>
 
         <div className="grid md:grid-cols-3 gap-8 mb-16">
-          <div className="group p-8 bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-white/20 hover:scale-105 text-center">
+          <div className="group p-8 bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-white/20 hover:scale-105 text-center outline-none hover:outline-violet-500">
             <div className="flex items-center justify-center w-16 h-16 bg-gradient-to-r from-blue-500 to-purple-500 rounded-2xl mb-6 mx-auto group-hover:scale-110 transition-transform">
               <MessageCircle className="h-8 w-8 text-white" />
             </div>
@@ -126,7 +126,7 @@ export function LandingPage({ onGetStarted, onStartChat }: LandingPageProps) {
             </p>
           </div>
 
-          <div className="group p-8 bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-white/20 hover:scale-105 text-center">
+          <div className="group p-8 bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-white/20 hover:scale-105 text-center outline-none hover:outline-violet-500">
             <div className="flex items-center justify-center w-16 h-16 bg-gradient-to-r from-green-500 to-blue-500 rounded-2xl mb-6 mx-auto group-hover:scale-110 transition-transform">
               <BarChart3 className="h-8 w-8 text-white" />
             </div>
@@ -139,7 +139,7 @@ export function LandingPage({ onGetStarted, onStartChat }: LandingPageProps) {
             </p>
           </div>
 
-          <div className="group p-8 bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-white/20 hover:scale-105 text-center">
+          <div className="group p-8 bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-white/20 hover:scale-105 text-center outline-none hover:outline-violet-500">
             <div className="flex items-center justify-center w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-500 rounded-2xl mb-6 mx-auto group-hover:scale-110 transition-transform">
               <Zap className="h-8 w-8 text-white" />
             </div>
@@ -169,7 +169,7 @@ export function LandingPage({ onGetStarted, onStartChat }: LandingPageProps) {
           {features.map((feature, index) => (
             <div
               key={index}
-              className="group p-8 bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-white/20 hover:scale-105"
+              className="group p-8 bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-white/20 hover:scale-105 outline-none hover:outline-violet-500"
             >
               <div className="flex items-center justify-center w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-500 rounded-xl mb-6 group-hover:scale-110 transition-transform">
                 <feature.icon className="h-6 w-6 text-white" />
@@ -234,23 +234,21 @@ export function LandingPage({ onGetStarted, onStartChat }: LandingPageProps) {
         </div>
         <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-8">
           {topics.map((topic, index) => (
-            <div className=" p-[2px] rounded-2xl bg-gradient-to-r from-gray-200 to-gray-200 hover:from-blue-600 hover:to-purple-600 transition-all duration-500 hover:scale-50">
-              <div
-                key={index}
-                className="group flex flex-col items-center text-center p-8 bg-white/90 backdrop-blur-sm rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-200 hover:scale-105 "
-              >
-                <div className="flex items-center justify-center w-30 h-30 rounded-full group-hover:scale-110 transition-transform">
-                  <img
-                    src={topic.img}
-                    alt={topic.name}
-                    className="w-30 h-30 object-contain"
-                  />
-                </div>
-
-                <h3 className="text-xl font-semibold text-gray-900">
-                  {topic.name}
-                </h3>
+            <div
+              key={index}
+              className="group flex flex-col items-center text-center p-8 bg-white/90 backdrop-blur-sm rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-200 hover:scale-105 outline-none hover:outline-violet-500 "
+            >
+              <div className="flex items-center justify-center w-30 h-30 rounded-full group-hover:scale-110 transition-transform">
+                <img
+                  src={topic.img}
+                  alt={topic.name}
+                  className="w-30 h-30 object-contain"
+                />
               </div>
+
+              <h3 className="text-xl font-semibold text-gray-900">
+                {topic.name}
+              </h3>
             </div>
           ))}
         </div>
@@ -337,7 +335,7 @@ export function LandingPage({ onGetStarted, onStartChat }: LandingPageProps) {
             className={`px-4 py-2 rounded-l-lg ${
               billingCycle === "monthly"
                 ? "bg-gradient-to-r from-blue-600 to-purple-600"
-                : "bg-white"
+                : "bg-white "
             }`}
             onClick={() => setBillingCycle("monthly")}
           >
@@ -366,7 +364,7 @@ export function LandingPage({ onGetStarted, onStartChat }: LandingPageProps) {
                 className={`max-w-sm w-full p-6 rounded-2xl shadow-lg transform transition-transform duration-300 hover:scale-105 ${
                   highlighted
                     ? "bg-gradient-to-r from-blue-600 to-purple-600"
-                    : "bg-white text-gray-800"
+                    : "bg-white text-gray-800 outline-none hover:outline-violet-500"
                 }`}
               >
                 <h2 className="text-2xl font-bold mb-4">{plan}</h2>
