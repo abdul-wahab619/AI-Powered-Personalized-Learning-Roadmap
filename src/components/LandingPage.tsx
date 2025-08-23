@@ -382,7 +382,7 @@ export function LandingPage({ onGetStarted, onStartChat }: LandingPageProps) {
                   )}
                 </p>
 
-                <ul className="mb-6 space-y-3">
+                <ul className="mb-6 space-y-3 h-[110px]">
                   {features.map((feature, idx) => (
                     <li key={idx} className="flex items-center">
                       <svg
