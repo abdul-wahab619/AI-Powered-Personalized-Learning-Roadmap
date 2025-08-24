@@ -113,7 +113,7 @@ export function LandingPage({ onGetStarted, onStartChat }: LandingPageProps) {
         </div>
 
         <div className="grid md:grid-cols-3 gap-8 mb-16">
-          <div className="group p-8 bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-white/20 hover:scale-105 text-center outline-none hover:outline-violet-500">
+          <div className="group cursor-pointer p-8 bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-white/20 hover:scale-105 text-center outline-none hover:outline-violet-500">
             <div className="flex items-center justify-center w-16 h-16 bg-gradient-to-r from-blue-500 to-purple-500 rounded-2xl mb-6 mx-auto group-hover:scale-110 transition-transform">
               <MessageCircle className="h-8 w-8 text-white" />
             </div>
@@ -126,7 +126,7 @@ export function LandingPage({ onGetStarted, onStartChat }: LandingPageProps) {
             </p>
           </div>
 
-          <div className="group p-8 bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-white/20 hover:scale-105 text-center outline-none hover:outline-violet-500">
+          <div className="group cursor-pointer p-8 bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-white/20 hover:scale-105 text-center outline-none hover:outline-violet-500">
             <div className="flex items-center justify-center w-16 h-16 bg-gradient-to-r from-green-500 to-blue-500 rounded-2xl mb-6 mx-auto group-hover:scale-110 transition-transform">
               <BarChart3 className="h-8 w-8 text-white" />
             </div>
@@ -139,7 +139,7 @@ export function LandingPage({ onGetStarted, onStartChat }: LandingPageProps) {
             </p>
           </div>
 
-          <div className="group p-8 bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-white/20 hover:scale-105 text-center outline-none hover:outline-violet-500">
+          <div className="group cursor-pointer p-8 bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-white/20 hover:scale-105 text-center outline-none hover:outline-violet-500">
             <div className="flex items-center justify-center w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-500 rounded-2xl mb-6 mx-auto group-hover:scale-110 transition-transform">
               <Zap className="h-8 w-8 text-white" />
             </div>
@@ -169,7 +169,7 @@ export function LandingPage({ onGetStarted, onStartChat }: LandingPageProps) {
           {features.map((feature, index) => (
             <div
               key={index}
-              className="group p-8 bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-white/20 hover:scale-105 outline-none hover:outline-violet-500"
+              className="group cursor-pointer p-8 bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-white/20 hover:scale-105 outline-none hover:outline-violet-500"
             >
               <div className="flex items-center justify-center w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-500 rounded-xl mb-6 group-hover:scale-110 transition-transform">
                 <feature.icon className="h-6 w-6 text-white" />
@@ -236,7 +236,7 @@ export function LandingPage({ onGetStarted, onStartChat }: LandingPageProps) {
           {topics.map((topic, index) => (
             <div
               key={index}
-              className="group flex flex-col items-center text-center p-8 bg-white/90 backdrop-blur-sm rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-200 hover:scale-105 outline-none hover:outline-violet-500 "
+              className="group cursor-pointer flex flex-col items-center text-center p-8 bg-white/90 backdrop-blur-sm rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-200 hover:scale-105 outline-none hover:outline-violet-500 "
             >
               <div className="flex items-center justify-center w-30 h-30 rounded-full group-hover:scale-110 transition-transform">
                 <img
