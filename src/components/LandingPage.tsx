@@ -22,7 +22,6 @@ import python from "../assets/popularTopics/python.svg";
 import ml from "../assets/popularTopics/machinelearning.svg";
 import cs from "../assets/popularTopics/computerscience.svg";
 import writing from "../assets/popularTopics/writing.svg";
-import statistics from "../assets/popularTopics/statitics.svg";
 
 // join Learning image.
 import Comunityimg from "../assets/joincommunity2.png";
@@ -40,7 +39,12 @@ export function LandingPage({ onGetStarted, onStartChat }: LandingPageProps) {
   const [billingCycle, setBillingCycle] = useState("monthly");
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 pt-16">
+    <div
+      className="min-h-screen 
+  bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 
+  dark:from-gray-900 dark:via-gray-800 dark:to-black 
+  pt-16 transition-colors duration-500"
+    >
       {/* Hero Section */}
       <div className="relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-blue-600/10 to-purple-600/10"></div>
@@ -52,14 +56,14 @@ export function LandingPage({ onGetStarted, onStartChat }: LandingPageProps) {
               </div>
             </div>
 
-            <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
+            <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight dark:text-white">
               AI-Powered Personalized
               <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent block mt-2">
                 Learning Roadmap
               </span>
             </h1>
 
-            <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed dark:text-white/60">
               Get AI-powered, step-by-step career roadmaps tailored to your
               goals using Google Gemini. Chat with AI, track progress, access
               curated resources, and build real projects that matter.
@@ -76,9 +80,9 @@ export function LandingPage({ onGetStarted, onStartChat }: LandingPageProps) {
 
               <button
                 onClick={onStartChat}
-                className="group px-8 py-4 border border-gray-300 text-gray-700 font-semibold rounded-xl hover:bg-gray-50 transition-colors duration-300 flex items-center gap-2"
+                className="group px-8 py-4 border border-gray-300 text-gray-700 font-semibold rounded-xl hover:bg-gray-50 transition-colors duration-300 flex items-center gap-2 "
               >
-                <MessageCircle className="h-5 w-5 group-hover:scale-110 transition-transform" />
+                <MessageCircle className="h-5 w-5 group-hover:scale-110 transition-transform " />
                 Chat with AI
               </button>
             </div>
@@ -101,12 +105,12 @@ export function LandingPage({ onGetStarted, onStartChat }: LandingPageProps) {
         </div>
       </div>
       {/* New Features Section */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 ">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 dark:text-white">
             Powered by Advanced AI Technology
           </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto dark:text-white/60 ">
             Experience the future of personalized learning with Google Gemini AI
             integration.
           </p>
@@ -154,34 +158,36 @@ export function LandingPage({ onGetStarted, onStartChat }: LandingPageProps) {
         </div>
       </div>
       {/* Features Section */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-            Everything you need to succeed
-          </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Our AI-powered platform provides personalized learning experiences
-            designed for your career goals.
-          </p>
-        </div>
+      <div className="w-[100%] dark:bg-gradient-to-r dark:from-blue-600/10 dark:to-purple-600/10 ">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 dark:text-white">
+              Everything you need to succeed
+            </h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto dark:text-white/60">
+              Our AI-powered platform provides personalized learning experiences
+              designed for your career goals.
+            </p>
+          </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {features.map((feature, index) => (
-            <div
-              key={index}
-              className="group p-8 bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-white/20 hover:scale-105 outline-none hover:outline-violet-500"
-            >
-              <div className="flex items-center justify-center w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-500 rounded-xl mb-6 group-hover:scale-110 transition-transform">
-                <feature.icon className="h-6 w-6 text-white" />
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {features.map((feature, index) => (
+              <div
+                key={index}
+                className="group p-8 bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-white/20 hover:scale-105 outline-none hover:outline-violet-500"
+              >
+                <div className="flex items-center justify-center w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-500 rounded-xl mb-6 group-hover:scale-110 transition-transform">
+                  <feature.icon className="h-6 w-6 text-white" />
+                </div>
+                <h3 className="text-xl font-semibold text-gray-900 mb-3">
+                  {feature.title}
+                </h3>
+                <p className="text-gray-600 leading-relaxed">
+                  {feature.description}
+                </p>
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-3">
-                {feature.title}
-              </h3>
-              <p className="text-gray-600 leading-relaxed">
-                {feature.description}
-              </p>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
       {/* Take Advantage Section */}
@@ -196,7 +202,7 @@ export function LandingPage({ onGetStarted, onStartChat }: LandingPageProps) {
                 Learn Smarter, Achieve More
               </h1>
 
-              <p className="text-lg text-gray-700 mb-6">
+              <p className="text-lg text-gray-700 mb-6 dark:text-white/60">
                 Explore an AI-powered learning platform that creates a
                 personalized roadmap for your skills. Track your progress,
                 practice hands-on projects, and get recommendations tailored
@@ -222,39 +228,41 @@ export function LandingPage({ onGetStarted, onStartChat }: LandingPageProps) {
         </div>
       </div>
       {/* Popular Topics */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 ">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-            Popular Topics
-          </h2>
-          <p className="text-gray-600 max-w-xl mx-auto">
-            Explore the most in-demand fields and boost your career with
-            personalized learning.
-          </p>
-        </div>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-8">
-          {topics.map((topic, index) => (
-            <div
-              key={index}
-              className="group flex flex-col items-center text-center p-8 bg-white/90 backdrop-blur-sm rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-200 hover:scale-105 outline-none hover:outline-violet-500 "
-            >
-              <div className="flex items-center justify-center w-30 h-30 rounded-full group-hover:scale-110 transition-transform">
-                <img
-                  src={topic.img}
-                  alt={topic.name}
-                  className="w-30 h-30 object-contain"
-                />
-              </div>
+      <div className="w-[100%] dark:bg-gradient-to-r dark:from-blue-600/10 dark:to-purple-600/10 ">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20  ">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 dark:text-white">
+              Popular Topics
+            </h2>
+            <p className="text-gray-600 max-w-xl mx-auto dark:text-white/60">
+              Explore the most in-demand fields and boost your career with
+              personalized learning.
+            </p>
+          </div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            {topics.map((topic, index) => (
+              <div
+                key={index}
+                className="group flex flex-col items-center text-center p-8 bg-white/90 backdrop-blur-sm rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-200 hover:scale-105 outline-none hover:outline-violet-500 "
+              >
+                <div className="flex items-center justify-center w-30 h-30 rounded-full group-hover:scale-110 transition-transform">
+                  <img
+                    src={topic.img}
+                    alt={topic.name}
+                    className="w-30 h-30 object-contain"
+                  />
+                </div>
 
-              <h3 className="text-xl font-semibold text-gray-900">
-                {topic.name}
-              </h3>
-            </div>
-          ))}
+                <h3 className="text-xl font-semibold text-gray-900">
+                  {topic.name}
+                </h3>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
       {/* Stats Section */}
-      <div className="bg-white/50 backdrop-blur-sm py-16">
+      <div className="bg-white/50 backdrop-blur-sm py-16 dark:bg-white/80">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-4 gap-8 text-center">
             <div>
@@ -281,48 +289,50 @@ export function LandingPage({ onGetStarted, onStartChat }: LandingPageProps) {
         </div>
       </div>
       {/* Join Learning */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 xl:grid-cols-2 gap-8">
-          {/* Text Section */}
-          <div className="px-6 py-8">
-            <h1 className="text-3xl md:text-4xl font-extrabold leading-snug mb-6 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent block mt-2">
-              Join LearningPath AI,
-              <br />
-              your smart learning companion
-            </h1>
+      <div className="w-[100%] dark:bg-gradient-to-r dark:from-blue-600/10 dark:to-purple-600/10 ">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 xl:grid-cols-2 gap-8">
+            {/* Text Section */}
+            <div className="px-6 py-8">
+              <h1 className="text-3xl md:text-4xl font-extrabold leading-snug mb-6 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent block mt-2">
+                Join LearningPath AI,
+                <br />
+                your smart learning companion
+              </h1>
 
-            <p className="text-lg font-semibold text-gray-800 mb-6">
-              With LearningPath AI, you can unlock personalized learning
-              experiences that adapt to your career goals and help you grow
-              faster.
-            </p>
+              <p className="text-lg font-semibold text-gray-800 mb-6 dark:text-white/60">
+                With LearningPath AI, you can unlock personalized learning
+                experiences that adapt to your career goals and help you grow
+                faster.
+              </p>
 
-            <ul className="space-y-4 text-gray-700 text-base leading-relaxed list-disc pl-5">
-              <li>
-                Get personalized learning roadmaps tailored to your skills and
-                interests.
-              </li>
-              <li>
-                Access curated resources, projects, and practice tasks powered
-                by AI.
-              </li>
-              <li>
-                Track your progress with smart analytics and weekly insights.
-              </li>
-              <li>
-                Upskill at your own pace with interactive modules and real-world
-                projects.
-              </li>
-              <li>
-                Join a growing community of learners and share your
-                achievements.
-              </li>
-            </ul>
-          </div>
+              <ul className="space-y-4 text-gray-700 text-base leading-relaxed list-disc pl-5 dark:text-white/60">
+                <li>
+                  Get personalized learning roadmaps tailored to your skills and
+                  interests.
+                </li>
+                <li>
+                  Access curated resources, projects, and practice tasks powered
+                  by AI.
+                </li>
+                <li>
+                  Track your progress with smart analytics and weekly insights.
+                </li>
+                <li>
+                  Upskill at your own pace with interactive modules and
+                  real-world projects.
+                </li>
+                <li>
+                  Join a growing community of learners and share your
+                  achievements.
+                </li>
+              </ul>
+            </div>
 
-          {/* Image Section */}
-          <div className="hidden xl:block py-8">
-            <img src={Comunityimg} alt="Loading" />
+            {/* Image Section */}
+            <div className="hidden xl:block py-8">
+              <img src={Comunityimg} alt="Loading" />
+            </div>
           </div>
         </div>
       </div>
@@ -334,8 +344,8 @@ export function LandingPage({ onGetStarted, onStartChat }: LandingPageProps) {
           <button
             className={`px-4 py-2 rounded-l-lg ${
               billingCycle === "monthly"
-                ? "bg-gradient-to-r from-blue-600 to-purple-600"
-                : "bg-white "
+                ? "  text-white font-semibold bg-blue-600  transition-colors duration-300 "
+                : " bg-white text-blue-600 font-semibold  hover:bg-gray-50 transition-colors duration-300 shadow-lg hover:shadow-xl transform "
             }`}
             onClick={() => setBillingCycle("monthly")}
           >
@@ -344,8 +354,8 @@ export function LandingPage({ onGetStarted, onStartChat }: LandingPageProps) {
           <button
             className={`px-4 py-2 rounded-r-lg ${
               billingCycle === "yearly"
-                ? "bg-gradient-to-r from-blue-600 to-purple-600"
-                : "bg-white"
+                ? "  text-white font-semibold bg-blue-600 transition-colors duration-300 "
+                : " bg-white text-blue-600 font-semibold  hover:bg-gray-50 transition-colors duration-300 shadow-lg hover:shadow-xl transform "
             }`}
             onClick={() => setBillingCycle("yearly")}
           >
@@ -361,7 +371,7 @@ export function LandingPage({ onGetStarted, onStartChat }: LandingPageProps) {
             return (
               <div
                 key={index}
-                className={`max-w-sm w-full p-6 rounded-2xl shadow-lg transform transition-transform duration-300 hover:scale-105 ${
+                className={` p-6 rounded-2xl shadow-lg transform transition-transform duration-300 hover:scale-105 ${
                   highlighted
                     ? "bg-gradient-to-r from-blue-600 to-purple-600"
                     : "bg-white text-gray-800 outline-none hover:outline-violet-500"
@@ -382,7 +392,7 @@ export function LandingPage({ onGetStarted, onStartChat }: LandingPageProps) {
                   )}
                 </p>
 
-                <ul className="mb-6 space-y-3">
+                <ul className="mb-6 space-y-3 h-[110px]">
                   {features.map((feature, idx) => (
                     <li key={idx} className="flex items-center">
                       <svg
@@ -421,8 +431,9 @@ export function LandingPage({ onGetStarted, onStartChat }: LandingPageProps) {
       </div>
 
       {/* CTA Section */}
-      <div className="bg-gradient-to-r from-blue-600 to-purple-600 py-20">
-        <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
+      <div className="relative overflow-hidden py-20">
+        <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-600 py-20 dark:from-gray-800 dark:to-gray-900  transition-colors duration-500"></div>
+        <div className="relative max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
             Ready to accelerate your career?
           </h2>
@@ -500,7 +511,6 @@ const topics = [
   { img: ml, name: "Machine Learning" },
   { img: cs, name: "Computer Science" },
   { img: writing, name: "Writing" },
-  { img: statistics, name: "Statistics" },
 ];
 
 // Pricing Section

@@ -1,8 +1,22 @@
-import React, { useState } from 'react';
-import { ArrowLeft, Clock, CheckCircle2, Circle, ExternalLink, BookOpen, PlayCircle, FileText, Code, Calendar, Target, Share2, Download } from 'lucide-react';
-import ReactMarkdown from 'react-markdown';
-import remarkGfm from 'remark-gfm';
-import type { LearningPath, Phase } from '../types';
+import React, { useState } from "react";
+import {
+  ArrowLeft,
+  Clock,
+  CheckCircle2,
+  Circle,
+  ExternalLink,
+  BookOpen,
+  PlayCircle,
+  FileText,
+  Code,
+  Calendar,
+  Target,
+  Share2,
+  Download,
+} from "lucide-react";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
+import type { LearningPath, Phase } from "../types";
 
 interface RoadmapViewProps {
   roadmap: LearningPath;
@@ -11,37 +25,46 @@ interface RoadmapViewProps {
   onViewDashboard: () => void;
 }
 
-export function RoadmapView({ roadmap, onBack, onSave, onViewDashboard }: RoadmapViewProps) {
+export function RoadmapView({
+  roadmap,
+  onBack,
+  onSave,
+  onViewDashboard,
+}: RoadmapViewProps) {
   const [localRoadmap, setLocalRoadmap] = useState<LearningPath>(roadmap);
-  const [expandedPhase, setExpandedPhase] = useState<string | null>(localRoadmap.phases[0]?.id || null);
+  const [expandedPhase, setExpandedPhase] = useState<string | null>(
+    localRoadmap.phases[0]?.id || null
+  );
 
   const togglePhaseCompletion = (phaseId: string) => {
-    const updatedPhases = localRoadmap.phases.map(phase => {
+    const updatedPhases = localRoadmap.phases.map((phase) => {
       if (phase.id === phaseId) {
         const completed = !phase.completed;
         return {
           ...phase,
           completed,
-          completedAt: completed ? new Date() : undefined
+          completedAt: completed ? new Date() : undefined,
         };
       }
       return phase;
     });
 
-    const completedCount = updatedPhases.filter(phase => phase.completed).length;
+    const completedCount = updatedPhases.filter(
+      (phase) => phase.completed
+    ).length;
     const progress = Math.round((completedCount / updatedPhases.length) * 100);
 
-    setLocalRoadmap(prev => ({
+    setLocalRoadmap((prev) => ({
       ...prev,
       phases: updatedPhases,
       progress,
-      updatedAt: new Date()
+      updatedAt: new Date(),
     }));
   };
 
   const handleSave = () => {
     onSave(localRoadmap);
-    alert('✅ Roadmap saved to your dashboard!');
+    alert("✅ Roadmap saved to your dashboard!");
   };
 
   const handleShare = async () => {
@@ -53,22 +76,24 @@ export function RoadmapView({ roadmap, onBack, onSave, onViewDashboard }: Roadma
           url: window.location.href,
         });
       } catch (error) {
-        console.log('Error sharing:', error);
+        console.log("Error sharing:", error);
       }
     } else {
       // Fallback: copy to clipboard
       navigator.clipboard.writeText(window.location.href);
-      alert('🔗 Link copied to clipboard!');
+      alert("🔗 Link copied to clipboard!");
     }
   };
 
   const handleExport = () => {
     const roadmapText = generateMarkdownExport(localRoadmap);
-    const blob = new Blob([roadmapText], { type: 'text/markdown' });
+    const blob = new Blob([roadmapText], { type: "text/markdown" });
     const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
+    const a = document.createElement("a");
     a.href = url;
-    a.download = `${localRoadmap.title.replace(/\s+/g, '-').toLowerCase()}-roadmap.md`;
+    a.download = `${localRoadmap.title
+      .replace(/\s+/g, "-")
+      .toLowerCase()}-roadmap.md`;
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
@@ -77,27 +102,32 @@ export function RoadmapView({ roadmap, onBack, onSave, onViewDashboard }: Roadma
 
   const getResourceIcon = (type: string) => {
     switch (type) {
-      case 'course': return <BookOpen className="h-4 w-4" />;
-      case 'video': return <PlayCircle className="h-4 w-4" />;
-      case 'article': return <FileText className="h-4 w-4" />;
-      case 'practice': return <Code className="h-4 w-4" />;
-      default: return <ExternalLink className="h-4 w-4" />;
+      case "course":
+        return <BookOpen className="h-4 w-4" />;
+      case "video":
+        return <PlayCircle className="h-4 w-4" />;
+      case "article":
+        return <FileText className="h-4 w-4" />;
+      case "practice":
+        return <Code className="h-4 w-4" />;
+      default:
+        return <ExternalLink className="h-4 w-4" />;
     }
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 pt-16">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 pt-16 dark:from-gray-900 dark:via-gray-800 dark:to-black">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Header */}
         <div className="mb-8">
           <button
             onClick={onBack}
-            className="flex items-center gap-2 text-gray-600 hover:text-gray-900 mb-6 transition-colors"
+            className="flex items-center gap-2 text-gray-600 hover:text-gray-900 mb-6 transition-colors dark:hover:text-white"
           >
             <ArrowLeft className="h-5 w-5" />
             Back to Goals
           </button>
-          
+
           <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg p-8 border border-white/20">
             <div className="flex items-start justify-between mb-6">
               <div className="flex-1">
@@ -107,7 +137,7 @@ export function RoadmapView({ roadmap, onBack, onSave, onViewDashboard }: Roadma
                 <p className="text-lg text-gray-600 mb-4">
                   {localRoadmap.description}
                 </p>
-                
+
                 <div className="flex flex-wrap gap-4 text-sm">
                   <div className="flex items-center gap-2 text-gray-600">
                     <Calendar className="h-4 w-4" />
@@ -123,7 +153,7 @@ export function RoadmapView({ roadmap, onBack, onSave, onViewDashboard }: Roadma
                   </div>
                 </div>
               </div>
-              
+
               <div className="text-right">
                 <div className="text-3xl font-bold text-blue-600 mb-2">
                   {localRoadmap.progress}%
@@ -131,7 +161,7 @@ export function RoadmapView({ roadmap, onBack, onSave, onViewDashboard }: Roadma
                 <div className="text-sm text-gray-600">Complete</div>
               </div>
             </div>
-            
+
             {/* Progress Bar */}
             <div className="w-full bg-gray-200 rounded-full h-3 mb-6">
               <div
@@ -139,7 +169,7 @@ export function RoadmapView({ roadmap, onBack, onSave, onViewDashboard }: Roadma
                 style={{ width: `${localRoadmap.progress}%` }}
               ></div>
             </div>
-            
+
             <div className="flex gap-3">
               <button
                 onClick={handleSave}
@@ -179,7 +209,9 @@ export function RoadmapView({ roadmap, onBack, onSave, onViewDashboard }: Roadma
               phase={phase}
               phaseNumber={index + 1}
               isExpanded={expandedPhase === phase.id}
-              onToggle={() => setExpandedPhase(expandedPhase === phase.id ? null : phase.id)}
+              onToggle={() =>
+                setExpandedPhase(expandedPhase === phase.id ? null : phase.id)
+              }
               onToggleCompletion={() => togglePhaseCompletion(phase.id)}
               getResourceIcon={getResourceIcon}
             />
@@ -199,25 +231,40 @@ interface PhaseCardProps {
   getResourceIcon: (type: string) => React.ReactNode;
 }
 
-function PhaseCard({ phase, phaseNumber, isExpanded, onToggle, onToggleCompletion, getResourceIcon }: PhaseCardProps) {
+function PhaseCard({
+  phase,
+  phaseNumber,
+  isExpanded,
+  onToggle,
+  onToggleCompletion,
+  getResourceIcon,
+}: PhaseCardProps) {
   return (
-    <div className={`bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-white/20 overflow-hidden transition-all duration-300 ${
-      phase.completed ? 'ring-2 ring-green-200' : ''
-    }`}>
+    <div
+      className={`bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-white/20 overflow-hidden transition-all duration-300 ${
+        phase.completed ? "ring-2 ring-green-200" : ""
+      }`}
+    >
       <div
         className="p-6 cursor-pointer hover:bg-white/50 transition-colors"
         onClick={onToggle}
       >
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-4">
-            <div className={`flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center font-bold ${
-              phase.completed
-                ? 'bg-green-500 text-white'
-                : 'bg-gray-200 text-gray-700'
-            }`}>
-              {phase.completed ? <CheckCircle2 className="h-5 w-5" /> : phaseNumber}
+            <div
+              className={`flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center font-bold ${
+                phase.completed
+                  ? "bg-green-500 text-white"
+                  : "bg-gray-200 text-gray-700"
+              }`}
+            >
+              {phase.completed ? (
+                <CheckCircle2 className="h-5 w-5" />
+              ) : (
+                phaseNumber
+              )}
             </div>
-            
+
             <div>
               <h3 className="text-xl font-bold text-gray-900 mb-1">
                 Phase {phaseNumber}: {phase.title}
@@ -232,7 +279,7 @@ function PhaseCard({ phase, phaseNumber, isExpanded, onToggle, onToggleCompletio
               </div>
             </div>
           </div>
-          
+
           <button
             onClick={(e) => {
               e.stopPropagation();
@@ -240,20 +287,26 @@ function PhaseCard({ phase, phaseNumber, isExpanded, onToggle, onToggleCompletio
             }}
             className={`p-2 rounded-full transition-all ${
               phase.completed
-                ? 'bg-green-100 text-green-600 hover:bg-green-200'
-                : 'bg-gray-100 text-gray-400 hover:bg-gray-200'
+                ? "bg-green-100 text-green-600 hover:bg-green-200"
+                : "bg-gray-100 text-gray-400 hover:bg-gray-200"
             }`}
           >
-            {phase.completed ? <CheckCircle2 className="h-6 w-6" /> : <Circle className="h-6 w-6" />}
+            {phase.completed ? (
+              <CheckCircle2 className="h-6 w-6" />
+            ) : (
+              <Circle className="h-6 w-6" />
+            )}
           </button>
         </div>
       </div>
-      
+
       {isExpanded && (
         <div className="border-t border-gray-200 p-6 bg-white/50">
           {/* Skills */}
           <div className="mb-6">
-            <h4 className="text-lg font-semibold text-gray-900 mb-3">Skills You'll Learn</h4>
+            <h4 className="text-lg font-semibold text-gray-900 mb-3">
+              Skills You'll Learn
+            </h4>
             <div className="flex flex-wrap gap-2">
               {phase.skills.map((skill, index) => (
                 <span
@@ -265,10 +318,12 @@ function PhaseCard({ phase, phaseNumber, isExpanded, onToggle, onToggleCompletio
               ))}
             </div>
           </div>
-          
+
           {/* Resources */}
           <div className="mb-6">
-            <h4 className="text-lg font-semibold text-gray-900 mb-3">Learning Resources</h4>
+            <h4 className="text-lg font-semibold text-gray-900 mb-3">
+              Learning Resources
+            </h4>
             <div className="grid md:grid-cols-2 gap-4">
               {phase.resources.map((resource, index) => (
                 <a
@@ -302,7 +357,7 @@ function PhaseCard({ phase, phaseNumber, isExpanded, onToggle, onToggleCompletio
               ))}
             </div>
           </div>
-          
+
           {/* Project */}
           <div className="bg-gradient-to-r from-blue-50 to-purple-50 p-6 rounded-xl">
             <h4 className="text-lg font-semibold text-gray-900 mb-2 flex items-center gap-2">
@@ -310,12 +365,22 @@ function PhaseCard({ phase, phaseNumber, isExpanded, onToggle, onToggleCompletio
               Milestone Project
             </h4>
             <div className="prose prose-sm max-w-none">
-              <ReactMarkdown 
+              <ReactMarkdown
                 remarkPlugins={[remarkGfm]}
                 components={{
-                  p: ({children}) => <p className="text-gray-700 mb-2">{children}</p>,
-                  strong: ({children}) => <strong className="font-semibold text-gray-900">{children}</strong>,
-                  code: ({children}) => <code className="bg-gray-200 px-1 py-0.5 rounded text-sm font-mono">{children}</code>
+                  p: ({ children }) => (
+                    <p className="text-gray-700 mb-2">{children}</p>
+                  ),
+                  strong: ({ children }) => (
+                    <strong className="font-semibold text-gray-900">
+                      {children}
+                    </strong>
+                  ),
+                  code: ({ children }) => (
+                    <code className="bg-gray-200 px-1 py-0.5 rounded text-sm font-mono">
+                      {children}
+                    </code>
+                  ),
                 }}
               >
                 {phase.project}
@@ -340,23 +405,34 @@ ${roadmap.description}
 
 ## Learning Phases
 
-${roadmap.phases.map((phase, index) => `
+${roadmap.phases
+  .map(
+    (phase, index) => `
 ### Phase ${index + 1}: ${phase.title}
 
 **Duration:** ${phase.duration} weeks  
-**Status:** ${phase.completed ? '✅ Completed' : '⏳ In Progress'}
+**Status:** ${phase.completed ? "✅ Completed" : "⏳ In Progress"}
 
 #### Skills You'll Learn
-${phase.skills.map(skill => `- ${skill}`).join('\n')}
+${phase.skills.map((skill) => `- ${skill}`).join("\n")}
 
 #### Learning Resources
-${phase.resources.map(resource => `- [${resource.title}](${resource.url}) (${resource.type}${resource.duration ? ` - ${resource.duration}` : ''})`).join('\n')}
+${phase.resources
+  .map(
+    (resource) =>
+      `- [${resource.title}](${resource.url}) (${resource.type}${
+        resource.duration ? ` - ${resource.duration}` : ""
+      })`
+  )
+  .join("\n")}
 
 #### Milestone Project
 ${phase.project}
 
 ---
-`).join('')}
+`
+  )
+  .join("")}
 
 Generated by LearnPath AI - ${new Date().toLocaleDateString()}
 `;

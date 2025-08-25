@@ -2,7 +2,7 @@ import { BookOpen, Facebook, Github, Instagram } from "lucide-react";
 
 const Footer = () => {
   return (
-    <footer className=" w-full bg-white shadow-2xl py-6 border-t border-gray-400 ">
+    <footer className=" w-full bg-white dark:bg-gray-800 shadow-2xl dark:shadow-black/50 py-6 border-t border-gray-400 dark:border-gray-700 transition-colors duration-300 ">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Top Links */}
         <div className="flex flex-col md:flex-row justify-between items-center gap-6 mb-8">
