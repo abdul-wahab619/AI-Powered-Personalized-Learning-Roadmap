@@ -174,7 +174,7 @@ export function LandingPage({ onGetStarted, onStartChat }: LandingPageProps) {
             {features.map((feature, index) => (
               <div
                 key={index}
-                className="group p-8 bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-white/20 hover:scale-105 outline-none hover:outline-violet-500"
+                className="group cursor-pointer p-8 bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-white/20 hover:scale-105 outline-none hover:outline-violet-500"
               >
                 <div className="flex items-center justify-center w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-500 rounded-xl mb-6 group-hover:scale-110 transition-transform">
                   <feature.icon className="h-6 w-6 text-white" />
