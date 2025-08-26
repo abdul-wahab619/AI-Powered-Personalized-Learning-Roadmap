@@ -80,7 +80,7 @@ export function LandingPage({ onGetStarted, onStartChat }: LandingPageProps) {
 
               <button
                 onClick={onStartChat}
-                className="group px-8 py-4 border border-gray-300 text-gray-700 font-semibold rounded-xl hover:bg-gray-50 transition-colors duration-300 flex items-center gap-2 "
+                className="group px-8 py-4 border border-gray-300 text-gray-700 font-semibold rounded-xl hover:bg-gray-50 transition-colors duration-300 flex items-center gap-2 dark:text-white/60 dark:hover:bg-gray-700 "
               >
                 <MessageCircle className="h-5 w-5 group-hover:scale-110 transition-transform " />
                 Chat with AI

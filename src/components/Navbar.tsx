@@ -63,10 +63,12 @@ export function Navbar({
           </div>
 
           {/* Navigation Items */}
+
           <div
-            className={`flex flex-col sm:flex-row sm:items-center  sm:space-x-1 absolute sm:static top-16 left-0 w-full sm:w-auto bg-white dark:bg-gray-900 sm:bg-transparent transition-all duration-300 ${
-              isMobileMenuOpen ? "block" : "hidden sm:flex"
-            }`}
+            className={`flex flex-col sm:flex-row sm:items-center sm:space-x-1 absolute sm:static top-16 left-0 w-full sm:w-auto 
+    bg-white dark:bg-gray-900 sm:bg-transparent sm:dark:bg-transparent transition-all duration-300 ${
+      isMobileMenuOpen ? "block" : "hidden sm:flex"
+    }`}
           >
             {navItems.map((item) => {
               const Icon = item.icon;
@@ -107,7 +109,7 @@ export function Navbar({
 
           {/* User Profile */}
           <div className="flex items-center">
-            <button className="p-2 text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-lg transition-colors">
+            <button className="p-2 text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-lg transition-colors dark:text-white/80 dark:hover:bg-gray-400">
               <User className="h-5 w-5" />
             </button>
           </div>

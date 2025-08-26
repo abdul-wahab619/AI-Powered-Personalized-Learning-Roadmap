@@ -164,6 +164,7 @@ function App() {
             onBack={() => handleNavigate("landing")}
             onRoadmapGenerated={handleRoadmapGenerated}
           />
+          <Footer />
         </>
       );
 
