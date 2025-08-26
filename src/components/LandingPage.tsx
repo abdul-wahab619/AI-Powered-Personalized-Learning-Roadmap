@@ -174,7 +174,7 @@ export function LandingPage({ onGetStarted, onStartChat }: LandingPageProps) {
             {features.map((feature, index) => (
               <div
                 key={index}
-                className="group cursor-pointer p-8 bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-white/20 hover:scale-105 outline-none hover:outline-violet-500"
+                className="group p-8 bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-white/20 hover:scale-105 outline-none hover:outline-violet-500"
               >
                 <div className="flex items-center justify-center w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-500 rounded-xl mb-6 group-hover:scale-110 transition-transform">
                   <feature.icon className="h-6 w-6 text-white" />
@@ -189,61 +189,59 @@ export function LandingPage({ onGetStarted, onStartChat }: LandingPageProps) {
             ))}
           </div>
         </div>
-      </div>
-      {/* Take Advantage Section */}
-      <div className="w-full  py-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 xl:grid-cols-2 gap-8 items-center">
-            {/* Text Section */}
-            <div className="px-6">
-              <h1 className="text-3xl md:text-4xl font-extrabold leading-snug mb-6 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent block mt-2">
-                Personalized AI Learning Path
-                <br />
-                Learn Smarter, Achieve More
-              </h1>
+        {/* Take Advantage Section */}
+        <div className="w-full  py-12">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid grid-cols-1 xl:grid-cols-2 gap-8 items-center">
+              {/* Text Section */}
+              <div className="px-6">
+                <h1 className="text-3xl md:text-4xl font-extrabold leading-snug mb-6 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent block mt-2">
+                  Personalized AI Learning Path
+                  <br />
+                  Learn Smarter, Achieve More
+                </h1>
 
-              <p className="text-lg text-gray-700 mb-6 dark:text-white/60">
-                Explore an AI-powered learning platform that creates a
-                personalized roadmap for your skills. Track your progress,
-                practice hands-on projects, and get recommendations tailored
-                just for you.
-              </p>
+                <p className="text-lg text-gray-700 mb-6 dark:text-white/60">
+                  Explore an AI-powered learning platform that creates a
+                  personalized roadmap for your skills. Track your progress,
+                  practice hands-on projects, and get recommendations tailored
+                  just for you.
+                </p>
 
-              <div>
-                <button className="px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-xl hover:from-blue-700 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 ">
-                  Explore Learning Path
-                </button>
+                <div>
+                  <button className="px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-xl hover:from-blue-700 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 ">
+                    Explore Learning Path
+                  </button>
+                </div>
               </div>
-            </div>
 
-            {/* Image Section */}
-            <div className="hidden xl:block">
-              <img
-                src={advantageimg}
-                alt="Project showcase"
-                className="rounded-xl shadow-lg"
-              />
+              {/* Image Section */}
+              <div className="hidden xl:block">
+                <img
+                  src={advantageimg}
+                  alt="Project showcase"
+                  className="rounded-xl shadow-lg"
+                />
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      {/* Popular Topics */}
-      <div className="w-[100%] dark:bg-gradient-to-r dark:from-blue-600/10 dark:to-purple-600/10 ">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20  ">
+        {/* Popular Topics */}
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 ">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 dark:text-white">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
               Popular Topics
             </h2>
-            <p className="text-gray-600 max-w-xl mx-auto dark:text-white/60">
+            <p className="text-gray-600 max-w-xl mx-auto">
               Explore the most in-demand fields and boost your career with
               personalized learning.
             </p>
           </div>
-          <div className=" grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-8">
             {topics.map((topic, index) => (
               <div
                 key={index}
-                className="group cursor-pointer flex flex-col items-center text-center p-8 bg-white/90 backdrop-blur-sm rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-200 hover:scale-105 outline-none hover:outline-violet-500 "
+                className="group flex flex-col items-center text-center p-8 bg-white/90 backdrop-blur-sm rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-200 hover:scale-105 outline-none hover:outline-violet-500 "
               >
                 <div className="flex items-center justify-center w-30 h-30 rounded-full group-hover:scale-110 transition-transform">
                   <img
