@@ -8,7 +8,7 @@ const Footer = () => {
         <div className="flex flex-col md:flex-row justify-between items-center gap-6 mb-8">
           {/* Logo */}
 
-          <nav className="flex flex-wrap justify-center md:justify-start gap-4 text-gray-600 items-center font-medium">
+          <nav className="flex flex-wrap justify-center md:justify-start gap-4 text-gray-600 items-center font-medium dark:text-white/60">
             <div className="flex items-center cursor-pointer hover:opacity-80 transition-opacity pr-5 ">
               <div className="p-2 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg">
                 <BookOpen className="h-6 w-6 text-white" />
@@ -64,7 +64,7 @@ const Footer = () => {
             {/* Facebook */}
             <a
               href="#"
-              className="text-gray-600 hover:text-blue-600 transition-colors flex items-center"
+              className="text-gray-600  hover:text-blue-600 transition-colors flex items-center "
             >
               <Facebook />
             </a>
@@ -72,7 +72,7 @@ const Footer = () => {
             {/* Instagram */}
             <a
               href="#"
-              className="text-gray-600 hover:text-pink-500 transition-colors flex items-center "
+              className="text-gray-600  hover:text-pink-500 transition-colors flex items-center"
             >
               <Instagram />
             </a>
@@ -80,7 +80,7 @@ const Footer = () => {
             {/* GitHub */}
             <a
               href="#"
-              className="text-gray-600 hover:text-gray-900 transition-colors flex items-center"
+              className="text-gray-600  hover:text-gray-900 transition-colors flex items-center"
             >
               <Github />
             </a>
@@ -88,7 +88,7 @@ const Footer = () => {
         </div>
 
         {/* Bottom Text */}
-        <p className="text-center text-gray-500 text-sm">
+        <p className="text-center text-gray-500 dark:text-white/60 text-sm">
           &copy; 2024 Your Company, Inc. All rights reserved.
         </p>
       </div>

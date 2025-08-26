@@ -229,15 +229,15 @@ export function LandingPage({ onGetStarted, onStartChat }: LandingPageProps) {
         {/* Popular Topics */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 ">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 dark:text-white">
               Popular Topics
             </h2>
-            <p className="text-gray-600 max-w-xl mx-auto">
+            <p className="text-gray-600 max-w-xl mx-auto dark:text-white/60">
               Explore the most in-demand fields and boost your career with
               personalized learning.
             </p>
           </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-8">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {topics.map((topic, index) => (
               <div
                 key={index}
