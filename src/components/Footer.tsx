@@ -60,11 +60,11 @@ const Footer = () => {
           </nav>
 
           {/* Social Icons */}
-          <div className="flex gap-6">
+          <div className="flex gap-6 ">
             {/* Facebook */}
             <a
               href="#"
-              className="text-gray-600  hover:text-blue-600 transition-colors flex items-center "
+              className="text-gray-600 dark:text-white/60  hover:text-blue-600 transition-colors flex items-center "
             >
               <Facebook />
             </a>
@@ -72,7 +72,7 @@ const Footer = () => {
             {/* Instagram */}
             <a
               href="#"
-              className="text-gray-600  hover:text-pink-500 transition-colors flex items-center"
+              className="text-gray-600 dark:text-white/60 hover:text-pink-500 transition-colors flex items-center"
             >
               <Instagram />
             </a>
@@ -80,7 +80,7 @@ const Footer = () => {
             {/* GitHub */}
             <a
               href="#"
-              className="text-gray-600  hover:text-gray-900 transition-colors flex items-center"
+              className="text-gray-600 dark:text-white/60 hover:text-gray-900 transition-colors flex items-center"
             >
               <Github />
             </a>
@@ -89,7 +89,8 @@ const Footer = () => {
 
         {/* Bottom Text */}
         <p className="text-center text-gray-500 dark:text-white/60 text-sm">
-          &copy; 2024 Your Company, Inc. All rights reserved.
+          &copy; {new Date().getFullYear()} Your Company, Inc. All rights
+          reserved.
         </p>
       </div>
     </footer>
