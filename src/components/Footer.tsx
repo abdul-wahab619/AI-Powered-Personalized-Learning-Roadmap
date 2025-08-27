@@ -2,13 +2,13 @@ import { BookOpen, Facebook, Github, Instagram } from "lucide-react";
 
 const Footer = () => {
   return (
-    <footer className=" w-full bg-white shadow-2xl py-6 border-t border-gray-400 ">
+    <footer className=" w-full bg-white dark:bg-gray-800 shadow-2xl dark:shadow-black/50 py-6 border-t border-gray-400 dark:border-gray-700 transition-colors duration-300 ">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Top Links */}
         <div className="flex flex-col md:flex-row justify-between items-center gap-6 mb-8">
           {/* Logo */}
 
-          <nav className="flex flex-wrap justify-center md:justify-start gap-4 text-gray-600 items-center font-medium">
+          <nav className="flex flex-wrap justify-center md:justify-start gap-4 text-gray-600 items-center font-medium dark:text-white/60">
             <div className="flex items-center cursor-pointer hover:opacity-80 transition-opacity pr-5 ">
               <div className="p-2 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg">
                 <BookOpen className="h-6 w-6 text-white" />
@@ -60,11 +60,11 @@ const Footer = () => {
           </nav>
 
           {/* Social Icons */}
-          <div className="flex gap-6">
+          <div className="flex gap-6 ">
             {/* Facebook */}
             <a
               href="#"
-              className="text-gray-600 hover:text-blue-600 transition-colors flex items-center"
+              className="text-gray-600 dark:text-white/60  hover:text-blue-600 transition-colors flex items-center "
             >
               <Facebook />
             </a>
@@ -72,7 +72,7 @@ const Footer = () => {
             {/* Instagram */}
             <a
               href="#"
-              className="text-gray-600 hover:text-pink-500 transition-colors flex items-center "
+              className="text-gray-600 dark:text-white/60 hover:text-pink-500 transition-colors flex items-center"
             >
               <Instagram />
             </a>
@@ -80,7 +80,7 @@ const Footer = () => {
             {/* GitHub */}
             <a
               href="#"
-              className="text-gray-600 hover:text-gray-900 transition-colors flex items-center"
+              className="text-gray-600 dark:text-white/60 hover:text-gray-900 transition-colors flex items-center"
             >
               <Github />
             </a>
@@ -88,8 +88,8 @@ const Footer = () => {
         </div>
 
         {/* Bottom Text */}
-        <p className="text-center text-gray-500 text-sm">
-          &copy; 2024 Your Company, Inc. All rights reserved.
+        <p className="text-center text-gray-500 dark:text-white/60 text-sm">
+          &copy; {new Date().getFullYear()} LearnPath AI, Inc. All rights
         </p>
       </div>
     </footer>
