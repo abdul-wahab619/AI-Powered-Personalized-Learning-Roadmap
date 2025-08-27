@@ -89,7 +89,7 @@ const Footer = () => {
 
         {/* Bottom Text */}
         <p className="text-center text-gray-500 dark:text-white/60 text-sm">
-          &copy; {new Date().getFullYear()} Your Company, Inc. All rights
+          &copy; {new Date().getFullYear()} LearnPath AI, Inc. All rights
         </p>
       </div>
     </footer>
