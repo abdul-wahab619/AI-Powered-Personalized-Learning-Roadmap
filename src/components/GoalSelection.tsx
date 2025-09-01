@@ -2,13 +2,9 @@ import React, { useState } from "react";
 import { Search, ArrowLeft, Clock, Users, TrendingUp } from "lucide-react";
 import { careerGoals } from "../data/careerGoals";
 import type { CareerGoal } from "../types";
+import { NavLink, useNavigate } from "react-router-dom";
 
-interface GoalSelectionProps {
-  onBack: () => void;
-  onGoalSelect: (goal: CareerGoal) => void;
-}
-
-export function GoalSelection({ onBack, onGoalSelect }: GoalSelectionProps) {
+export function GoalSelection() {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState<string>("All");
 
@@ -26,6 +22,8 @@ export function GoalSelection({ onBack, onGoalSelect }: GoalSelectionProps) {
     return matchesSearch && matchesCategory;
   });
 
+  const navigate = useNavigate();
+
   return (
     <div
       className="min-h-screen 
@@ -37,13 +35,13 @@ export function GoalSelection({ onBack, onGoalSelect }: GoalSelectionProps) {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           {/* Header */}
           <div className="mb-8">
-            <button
-              onClick={onBack}
+            <NavLink
+              to="/"
               className="flex items-center gap-2 text-gray-600 hover:text-gray-900 mb-6 transition-colors dark:hover:text-white"
             >
               <ArrowLeft className="h-5 w-5" />
               Back to Home
-            </button>
+            </NavLink>
 
             <div className="text-center mb-8">
               <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4 dark:text-white">
@@ -95,7 +93,7 @@ export function GoalSelection({ onBack, onGoalSelect }: GoalSelectionProps) {
               <GoalCard
                 key={goal.id}
                 goal={goal}
-                onClick={() => onGoalSelect(goal)}
+                onClick={() => navigate(`/goals/${goal.id}`)}
               />
             ))}
           </div>

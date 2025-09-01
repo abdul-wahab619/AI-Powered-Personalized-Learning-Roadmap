@@ -4,6 +4,7 @@ import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { generateChatResponse, generateLearningPath } from "../services/gemini";
 import type { LearningPath } from "../types";
+import { NavLink } from "react-router-dom";
 
 interface Message {
   id: string;
@@ -13,15 +14,12 @@ interface Message {
   isGeneratingRoadmap?: boolean;
 }
 
-interface ChatInterfaceProps {
-  onBack: () => void;
-  onRoadmapGenerated: (roadmap: LearningPath) => void;
-}
+// interface ChatInterfaceProps {
+//   onBack: () => void;
+//   onRoadmapGenerated: (roadmap: LearningPath) => void;
+// }
 
-export function ChatInterface({
-  onBack,
-  onRoadmapGenerated,
-}: ChatInterfaceProps) {
+export function ChatInterface() {
   const [messages, setMessages] = useState<Message[]>([
     {
       id: "1",
@@ -149,9 +147,9 @@ Click the button below to view your complete roadmap with resources and projects
           );
 
           // Trigger roadmap view
-          setTimeout(() => {
-            onRoadmapGenerated(learningPath);
-          }, 1000);
+          // setTimeout(() => {
+          //   onRoadmapGenerated(learningPath);
+          // }, 1000);
         } catch (error) {
           const errorMessage: Message = {
             id: (Date.now() + 2).toString(),
@@ -205,14 +203,13 @@ Click the button below to view your complete roadmap with resources and projects
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Header */}
         <div className="mb-6">
-          <button
-            onClick={onBack}
+          <NavLink
+            to="/"
             className="flex items-center gap-2 text-gray-600 hover:text-gray-900 mb-4 transition-colors dark:hover:text-white"
           >
             <ArrowLeft className="h-5 w-5" />
             Back to Home
-          </button>
-
+          </NavLink>
           <div className="text-center">
             <div className="flex justify-center mb-4">
               <div className="p-3 bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl">

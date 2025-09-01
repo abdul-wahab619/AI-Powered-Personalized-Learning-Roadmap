@@ -1,4 +1,5 @@
 import { BookOpen, Facebook, Github, Instagram } from "lucide-react";
+import { NavLink } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -10,35 +11,38 @@ const Footer = () => {
 
           <nav className="flex flex-wrap justify-center md:justify-start gap-4 text-gray-600 items-center font-medium dark:text-white/60">
             <div className="flex items-center cursor-pointer hover:opacity-80 transition-opacity pr-5 ">
-              <div className="p-2 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg">
+              <NavLink
+                to="/"
+                className="p-2 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg"
+              >
                 <BookOpen className="h-6 w-6 text-white" />
-              </div>
+              </NavLink>
             </div>
-
-            <a
-              href="#"
+            <NavLink
+              to="/"
               className="p-2 hover:bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg hover:text-white"
             >
               Home
-            </a>
-            <a
-              href="#"
+            </NavLink>
+
+            <NavLink
+              to="goals"
               className="p-2 hover:bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg hover:text-white"
             >
               Goals
-            </a>
-            <a
-              href="#"
+            </NavLink>
+            <NavLink
+              to="aichat"
               className="p-2 hover:bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg hover:text-white"
             >
               AI Chat
-            </a>
-            <a
-              href="#"
+            </NavLink>
+            <NavLink
+              to="dashboard"
               className="p-2 hover:bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg hover:text-white"
             >
               Dashboard
-            </a>
+            </NavLink>
             <a
               href="#"
               className="p-2 hover:bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg hover:text-white"

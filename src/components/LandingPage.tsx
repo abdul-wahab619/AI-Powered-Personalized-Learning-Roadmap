@@ -28,13 +28,14 @@ import Comunityimg from "../assets/joincommunity2.png";
 // take advantage image.
 import advantageimg from "../assets/takeadvantage.webp";
 import { useState } from "react";
+import { NavLink } from "react-router-dom";
 
-interface LandingPageProps {
-  onGetStarted: () => void;
-  onStartChat: () => void;
-}
-
-export function LandingPage({ onGetStarted, onStartChat }: LandingPageProps) {
+// interface LandingPageProps {
+//   onGetStarted: () => void;
+//   onStartChat: () => void;
+// }
+// { onGetStarted, onStartChat }: LandingPageProps
+export function LandingPage() {
   //for set pricing.
   const [billingCycle, setBillingCycle] = useState("monthly");
 
@@ -70,21 +71,20 @@ export function LandingPage({ onGetStarted, onStartChat }: LandingPageProps) {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
-              <button
-                onClick={onGetStarted}
+              <NavLink
+                to="/goals"
                 className="group px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-xl hover:from-blue-700 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 flex items-center gap-2"
               >
                 Start Your Journey
                 <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
-              </button>
-
-              <button
-                onClick={onStartChat}
+              </NavLink>
+              <NavLink
+                to="/aichat"
                 className="group px-8 py-4 border border-gray-300 text-gray-700 font-semibold rounded-xl hover:bg-gray-50 transition-colors duration-300 flex items-center gap-2 dark:text-white/60 dark:hover:bg-gray-700 "
               >
                 <MessageCircle className="h-5 w-5 group-hover:scale-110 transition-transform " />
                 Chat with AI
-              </button>
+              </NavLink>
             </div>
 
             <div className="flex justify-center items-center gap-8 text-sm text-gray-500">
@@ -440,18 +440,18 @@ export function LandingPage({ onGetStarted, onStartChat }: LandingPageProps) {
             AI-powered personalized roadmaps.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button
-              onClick={onGetStarted}
+            <NavLink
+              to="/goals"
               className="px-8 py-4 bg-white text-blue-600 font-semibold rounded-xl hover:bg-gray-50 transition-colors duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
             >
               Get Started Free
-            </button>
-            <button
-              onClick={onStartChat}
+            </NavLink>
+            <NavLink
+              to="/aichat"
               className="px-8 py-4 border-2 border-white text-white font-semibold rounded-xl hover:bg-white hover:text-blue-600 transition-colors duration-300"
             >
               Try AI Chat
-            </button>
+            </NavLink>
           </div>
         </div>
       </div>

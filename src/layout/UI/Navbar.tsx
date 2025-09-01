@@ -11,28 +11,15 @@ import {
   Menu,
 } from "lucide-react";
 import { useContext } from "react";
-import { ThemeContext } from "../context/ThemeContext";
+import { ThemeContext } from "../../context/ThemeContext";
+import { NavLink } from "react-router-dom";
 
-interface NavbarProps {
-  currentView: string;
-  onNavigate: (view: string) => void;
-  savedPathsCount: number;
-}
-
-export function Navbar({
-  currentView,
-  onNavigate,
-  savedPathsCount,
-}: NavbarProps) {
+export function Navbar() {
   const navItems = [
-    { id: "landing", label: "Home", icon: Home },
+    { id: "/", label: "Home", icon: Home },
     { id: "goals", label: "Goals", icon: Target },
-    { id: "chat", label: "AI Chat", icon: MessageCircle },
-    {
-      id: "dashboard",
-      label: `Dashboard ${savedPathsCount > 0 ? `(${savedPathsCount})` : ""}`,
-      icon: BarChart3,
-    },
+    { id: "aichat", label: "AI Chat", icon: MessageCircle },
+    { id: "dashboard", label: "Dashboard", icon: BarChart3 },
   ];
   const { theme, toggleTheme } = useContext(ThemeContext);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -48,19 +35,18 @@ export function Navbar({
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <div
-            className="flex items-center gap-2 cursor-pointer hover:opacity-80 transition-opacity"
-            onClick={() => onNavigate("landing")}
-          >
-            <div className="p-2 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg">
-              <BookOpen className="h-6 w-6 text-white" />
+          <NavLink to="/">
+            <div className="flex items-center gap-2 cursor-pointer hover:opacity-80 transition-opacity">
+              <div className="p-2 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg">
+                <BookOpen className="h-6 w-6 text-white" />
+              </div>
+              <div className="hidden sm:block">
+                <h1 className="text-xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+                  LearnPath AI
+                </h1>
+              </div>
             </div>
-            <div className="hidden sm:block">
-              <h1 className="text-xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                LearnPath AI
-              </h1>
-            </div>
-          </div>
+          </NavLink>
 
           {/* Navigation Items */}
 
@@ -72,22 +58,22 @@ export function Navbar({
           >
             {navItems.map((item) => {
               const Icon = item.icon;
-              const isActive = currentView === item.id;
-
               return (
-                <button
+                <NavLink
                   key={item.id}
-                  onClick={() => onNavigate(item.id)}
-                  className={`flex items-center gap-2 px-3 py-2 rounded-lg font-medium transition-all duration-200 dark:text-white/80 ${
-                    isActive
-                      ? "bg-blue-100 text-blue-700 shadow-sm dark:bg-blue-500"
-                      : "text-gray-600 hover:text-gray-900 hover:bg-gray-100 dark:hover:bg-gray-400"
-                  }`}
+                  to={item.id}
+                  className={({ isActive }) =>
+                    `flex items-center gap-2 px-3 py-2 rounded-lg font-medium transition-all duration-200 dark:text-white/80 ${
+                      isActive
+                        ? "bg-blue-100 text-blue-700 shadow-sm dark:bg-blue-500"
+                        : "text-gray-600 hover:text-gray-900 hover:bg-gray-100 dark:hover:bg-gray-400"
+                    }`
+                  }
                 >
                   <Icon className="h-4 w-4" />
                   <span className="text-sm">{item.label}</span>{" "}
                   {/* always visible */}
-                </button>
+                </NavLink>
               );
             })}
           </div>

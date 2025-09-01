@@ -17,6 +17,7 @@ import {
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import type { LearningPath, Phase } from "../types";
+import { useNavigate, useParams } from "react-router-dom";
 
 interface RoadmapViewProps {
   roadmap: LearningPath;
@@ -31,7 +32,10 @@ export function RoadmapView({
   onSave,
   onViewDashboard,
 }: RoadmapViewProps) {
+  // const navigate = useNavigate();
+  const { id } = useParams();
   const [localRoadmap, setLocalRoadmap] = useState<LearningPath>(roadmap);
+
   const [expandedPhase, setExpandedPhase] = useState<string | null>(
     localRoadmap.phases[0]?.id || null
   );
