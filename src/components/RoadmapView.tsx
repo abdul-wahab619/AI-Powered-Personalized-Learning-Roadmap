@@ -13,10 +13,12 @@ import {
   Target,
   Share2,
   Download,
+  ChevronDown,
 } from "lucide-react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import type { LearningPath, Phase } from "../types";
+import { generateCSVExport, generateMarkdownExport, generatePDFExport } from "../utils/exportUtils";
 
 interface RoadmapViewProps {
   roadmap: LearningPath;
@@ -35,6 +37,39 @@ export function RoadmapView({
   const [expandedPhase, setExpandedPhase] = useState<string | null>(
     localRoadmap.phases[0]?.id || null
   );
+
+  const [isExportMenuOpen, setIsExportMenuOpen] = useState(false);
+
+  const downloadFile = (content: string | Blob, filename: string) => {
+    const url = typeof content === 'string' 
+      ? URL.createObjectURL(new Blob([content], { type: "text/plain" }))
+      : URL.createObjectURL(content);
+      
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+    setIsExportMenuOpen(false);
+  };
+
+  const exportAsMarkdown = () => {
+    const content = generateMarkdownExport(localRoadmap);
+    downloadFile(content, `${localRoadmap.title.replace(/\s+/g, "-").toLowerCase()}-roadmap.md`);
+  };
+
+  const exportAsCSV = () => {
+    const content = generateCSVExport(localRoadmap);
+    downloadFile(content, `${localRoadmap.title.replace(/\s+/g, "-").toLowerCase()}-roadmap.csv`);
+  };
+
+  const exportAsPDF = () => {
+    const doc = generatePDFExport(localRoadmap);
+    doc.save(`${localRoadmap.title.replace(/\s+/g, "-").toLowerCase()}-roadmap.pdf`);
+    setIsExportMenuOpen(false);
+  };
 
   const togglePhaseCompletion = (phaseId: string) => {
     const updatedPhases = localRoadmap.phases.map((phase) => {
@@ -85,20 +120,7 @@ export function RoadmapView({
     }
   };
 
-  const handleExport = () => {
-    const roadmapText = generateMarkdownExport(localRoadmap);
-    const blob = new Blob([roadmapText], { type: "text/markdown" });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = `${localRoadmap.title
-      .replace(/\s+/g, "-")
-      .toLowerCase()}-roadmap.md`;
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    URL.revokeObjectURL(url);
-  };
+
 
   const getResourceIcon = (type: string) => {
     switch (type) {
@@ -190,13 +212,39 @@ export function RoadmapView({
                 <Share2 className="h-4 w-4" />
                 <span className="hidden sm:inline">Share</span>
               </button>
-              <button
-                onClick={handleExport}
-                className="px-4 py-3 border border-gray-300 text-gray-700 rounded-xl hover:bg-gray-50 transition-colors duration-300 flex items-center gap-2"
-              >
-                <Download className="h-4 w-4" />
-                <span className="hidden sm:inline">Export</span>
-              </button>
+              <div className="relative">
+                <button
+                  onClick={() => setIsExportMenuOpen(!isExportMenuOpen)}
+                  className="px-4 py-3 border border-gray-300 text-gray-700 rounded-xl hover:bg-gray-50 transition-colors duration-300 flex items-center gap-2"
+                >
+                  <Download className="h-4 w-4" />
+                  <span className="hidden sm:inline">Export</span>
+                  <ChevronDown className="h-3 w-3" />
+                </button>
+
+                {isExportMenuOpen && (
+                  <div className="absolute right-0 mt-2 w-48 bg-white rounded-xl shadow-lg border border-gray-100 py-2 z-50">
+                    <button
+                      onClick={exportAsPDF}
+                      className="w-full px-4 py-2 text-left text-gray-700 hover:bg-gray-50 transition-colors flex items-center gap-2"
+                    >
+                      <span className="font-medium">Export as PDF</span>
+                    </button>
+                    <button
+                      onClick={exportAsCSV}
+                      className="w-full px-4 py-2 text-left text-gray-700 hover:bg-gray-50 transition-colors flex items-center gap-2"
+                    >
+                      <span className="font-medium">Export as CSV</span>
+                    </button>
+                    <button
+                      onClick={exportAsMarkdown}
+                      className="w-full px-4 py-2 text-left text-gray-700 hover:bg-gray-50 transition-colors flex items-center gap-2"
+                    >
+                      <span className="font-medium">Export as Markdown</span>
+                    </button>
+                  </div>
+                )}
+              </div>
             </div>
           </div>
         </div>
@@ -393,47 +441,4 @@ function PhaseCard({
   );
 }
 
-function generateMarkdownExport(roadmap: LearningPath): string {
-  return `# ${roadmap.title} Learning Roadmap
 
-**Duration:** ${roadmap.duration} months  
-**Difficulty:** ${roadmap.difficulty}  
-**Progress:** ${roadmap.progress}%
-
-## Description
-${roadmap.description}
-
-## Learning Phases
-
-${roadmap.phases
-  .map(
-    (phase, index) => `
-### Phase ${index + 1}: ${phase.title}
-
-**Duration:** ${phase.duration} weeks  
-**Status:** ${phase.completed ? "✅ Completed" : "⏳ In Progress"}
-
-#### Skills You'll Learn
-${phase.skills.map((skill) => `- ${skill}`).join("\n")}
-
-#### Learning Resources
-${phase.resources
-  .map(
-    (resource) =>
-      `- [${resource.title}](${resource.url}) (${resource.type}${
-        resource.duration ? ` - ${resource.duration}` : ""
-      })`
-  )
-  .join("\n")}
-
-#### Milestone Project
-${phase.project}
-
----
-`
-  )
-  .join("")}
-
-Generated by LearnPath AI - ${new Date().toLocaleDateString()}
-`;
-}
